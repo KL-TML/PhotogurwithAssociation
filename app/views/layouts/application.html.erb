@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Photogur</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag  'http://fonts.googleapis.com/css?family=Poiret+One|Lora' %>
+  </head>
+
+  <body>
+
+    <header>
+      <h1><%= link_to 'Photogur', root_path %></h1>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <p class="userinfo">
+      <% if current_user %>
+        Signed in as <%= current_user.email %>. <%= link_to "Log out", sessions_path("current"), :method => :delete %>
+      <% else %>
+        <%= link_to "Log in", new_sessions_path %> or <%= link_to "Sign up", new_users_path %>
+      <% end %>
+    </p>
+
+  </body>
+</html>
