@@ -8,6 +8,8 @@ class PicturesController < ApplicationController
     @picture.description = params[:picture][:description]
     @picture.url = params[:picture][:url]
 
+    @picture.user_id = current_user.id
+
     if @picture.save
       redirect_to pictures_path
     else
