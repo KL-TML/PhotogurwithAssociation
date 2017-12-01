@@ -1,6 +1,9 @@
 class PicturesController < ApplicationController
 
   before_action :ensure_logged_in, except: [:show, :index]
+  before_action :load_picture, only: [:show, :edit, :update, :destroy]
+  # before_action :ensure_user_owns_picture,
+
 
   def create
     @picture = Picture.new
@@ -17,6 +20,10 @@ class PicturesController < ApplicationController
     end
   end
 
+  def load_picture
+    @picture = Picture.find(params[:id])
+  end
+
   def new
     @picture = Picture.new
   end
@@ -26,15 +33,15 @@ class PicturesController < ApplicationController
   end
 
   def show
-    @picture = Picture.find(params[:id])
+
   end
 
   def edit
-    @picture = Picture.find(params[:id])
+
   end
 
   def update
-    @picture = Picture.find(params[:id])
+
     @picture.title = params[:picture][:title]
     @picture.description = params[:picture][:description]
     @picture.url = params[:picture][:url]
