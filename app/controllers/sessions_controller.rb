@@ -14,10 +14,6 @@ class SessionsController < ApplicationController
 
   end
 
-  def 
-
-  end
-
   def destroy
     session[:user_id] = nil
     redirect_to pictures_url, notice: "Logged out!"

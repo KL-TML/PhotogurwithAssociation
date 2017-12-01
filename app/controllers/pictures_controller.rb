@@ -1,5 +1,7 @@
 class PicturesController < ApplicationController
 
+  before_action :ensure_logged_in, except: [:show, :index]
+
   def create
     @picture = Picture.new
     @picture.title = params[:picture][:title]
