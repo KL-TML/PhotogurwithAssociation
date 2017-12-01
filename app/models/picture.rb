@@ -8,4 +8,5 @@ class Picture < ActiveRecord::Base
   # Picture.first.comments <<
   # Picture.first.tags
   # etc...
+  belongs_to :user
 end
